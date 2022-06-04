@@ -10,6 +10,7 @@ const operation = document.getElementById("operation");
 
 clearBtn.addEventListener("click", clearScreen);
 deleteBtn.addEventListener("click", deleteNum);
+dotBtn.addEventListener("click", appendDot);
 
 function clearScreen() {
   result.textContent = 0;
@@ -21,5 +22,13 @@ function deleteNum() {
     result.textContent = result.textContent.toString().slice(0, -1);
   } else if (result.textContent.length < 2) {
     result.textContent = 0;
+  }
+}
+
+function appendDot() {
+  if (result.textContent.includes(".")) {
+    return;
+  } else {
+    result.textContent += ".";
   }
 }
