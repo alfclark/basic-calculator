@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --grey: #757575;
+  --lightGrey: #cfd8dc;
+  --black: #1f212b;
+  --orange: #ffab40;
+  --silver: #e0e0e0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: var(--lightGrey);
+  font-family: "Courier New", Courier, monospace;
+}
