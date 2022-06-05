@@ -12,6 +12,10 @@ clearBtn.addEventListener("click", clearScreen);
 deleteBtn.addEventListener("click", deleteNum);
 dotBtn.addEventListener("click", appendDot);
 
+numberBtns.forEach((button) => {
+  button.addEventListener("click", () => appendNumber(button.textContent));
+});
+
 function clearScreen() {
   result.textContent = 0;
   operation.style.opacity = 0;
@@ -31,4 +35,12 @@ function appendDot() {
   } else {
     result.textContent += ".";
   }
+}
+
+function appendNumber(number) {
+  if (result.textContent)
+    if (result.textContent === "0") {
+      result.textContent = "";
+    }
+  result.textContent += number;
 }
