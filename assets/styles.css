@@ -28,6 +28,7 @@ main {
   background-color: var(--black);
   padding: 2rem;
   border-radius: 1rem;
+  width: 300px;
 }
 
 .screen {
@@ -36,10 +37,12 @@ main {
   border-radius: 0.725rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  text-align: right;
   justify-content: center;
   padding: 1rem;
   gap: 0.5rem;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .operation {
