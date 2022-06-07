@@ -8,6 +8,10 @@ const equal = document.getElementById("equal");
 const result = document.getElementById("result");
 const operation = document.getElementById("operation");
 
+let firstNumber = "";
+let secondNumber = "";
+let stateOperation = null;
+
 clearBtn.addEventListener("click", clearScreen);
 deleteBtn.addEventListener("click", deleteNum);
 dotBtn.addEventListener("click", appendDot);
@@ -49,4 +53,9 @@ function appendNumber(number) {
   result.textContent += number;
 }
 
-function setOperation(operator) {}
+function setOperation(operator) {
+  if (stateOperation !== null) evaluate();
+  firstNumber = result.textContent;
+  result = operator;
+  operation.textContent = `${firstNumber} ${result}`;
+}
