@@ -16,6 +16,10 @@ numberBtns.forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.textContent));
 });
 
+operatorBtns.forEach((button) => {
+  button.addEventListener("click", () => setOperation(button.textContent));
+});
+
 function clearScreen() {
   result.textContent = 0;
   operation.style.opacity = 0;
@@ -44,3 +48,5 @@ function appendNumber(number) {
     }
   result.textContent += number;
 }
+
+function setOperation(operator) {}
