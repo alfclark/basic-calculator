@@ -11,6 +11,7 @@ const operation = document.getElementById("operation");
 let firstNumber = "";
 let secondNumber = "";
 let stateOperation = null;
+let screenState = false;
 
 clearBtn.addEventListener("click", clearScreen);
 deleteBtn.addEventListener("click", deleteNum);
