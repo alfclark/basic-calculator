@@ -16,6 +16,7 @@ let screenState = false;
 clearBtn.addEventListener("click", clearScreen);
 deleteBtn.addEventListener("click", deleteNum);
 dotBtn.addEventListener("click", appendDot);
+equal.addEventListener("click", evaluate);
 
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.textContent));
@@ -28,6 +29,8 @@ operatorBtns.forEach((button) => {
 function clearScreen() {
   result.textContent = 0;
   operation.textContent = "";
+  firstNumber = "";
+  secondNumber = "";
   stateOperation = null;
 }
 
@@ -66,8 +69,8 @@ function setOperation(operator) {
   }
   firstNumber = result.textContent;
   stateOperation = operator;
+  console.log(firstNumber);
   operation.textContent = `${firstNumber} ${stateOperation}`;
-  operation.style.opacity = 1;
   screenState = true;
 }
 
@@ -81,10 +84,44 @@ function evaluate() {
   result.textContent = roundResult(
     operate(stateOperation, firstNumber, secondNumber)
   );
-  operation.textContent = `${firstNumber} ${stateOperation} ${secondNumber}`;
+  operation.textContent = `${firstNumber} ${stateOperation} ${secondNumber} =`;
   stateOperation = null;
 }
 
 function roundResult(number) {
   return Math.round(number * 1000) / 1000;
+}
+
+function operate(operator, a, b) {
+  a = Number(a);
+  b = Number(b);
+  switch (operator) {
+    case "+":
+      return add(a, b);
+    case "-":
+      return substract(a, b);
+    case "x":
+      return multiply(a, b);
+    case "÷":
+      if (b === 0) return null;
+      else return divide(a, b);
+    default:
+      return null;
+  }
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+function substract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  return a / b;
 }
