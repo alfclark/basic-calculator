@@ -26,7 +26,6 @@ operatorBtns.forEach((button) => {
 
 function clearScreen() {
   result.textContent = 0;
-  operation.style.opacity = 0;
 }
 
 function deleteNum() {
@@ -47,15 +46,38 @@ function appendDot() {
 
 function appendNumber(number) {
   if (result.textContent)
-    if (result.textContent === "0") {
-      result.textContent = "";
+    if (result.textContent === "0" || screenState) {
+      resetScreen();
     }
   result.textContent += number;
 }
 
+function resetScreen() {
+  result.textContent = "";
+  screenState = false;
+}
+
 function setOperation(operator) {
-  if (stateOperation !== null) evaluate();
+  if (stateOperation !== null) {
+    evaluate();
+  }
   firstNumber = result.textContent;
-  result = operator;
-  operation.textContent = `${firstNumber} ${result}`;
+  stateOperation = operator;
+  operation.textContent = `${firstNumber} ${stateOperation}`;
+  operation.style.opacity = 1;
+  screenState = true;
+}
+
+function evaluate() {
+  if (stateOperation === null || screenState) return;
+  if (stateOperation === "÷" && result.textContent === "0") {
+    result.textContent = "Math ERROR";
+    return;
+  }
+  secondNumber = result.textContent;
+  result.textContent = roundResult(
+    operate(stateOperation, firstNumber, secondNumber)
+  );
+  operation.textContent = `${firstNumber} ${stateOperation} ${secondNumber}`;
+  stateOperation = null;
 }
