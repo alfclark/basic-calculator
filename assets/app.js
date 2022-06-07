@@ -26,6 +26,8 @@ operatorBtns.forEach((button) => {
 
 function clearScreen() {
   result.textContent = 0;
+  operation.textContent = "";
+  stateOperation = null;
 }
 
 function deleteNum() {
